@@ -312,11 +312,116 @@ public class Main{
         
         for(int i=0;i<5;i++){
             int n=scanner.nextInt();
-            if(n<0) continue;
+            if(n<=0) continue;
             else sum += n;
         }
         System.out.print("양수의 합은 "+ sum);
         
+        scanner.close();
+    }
+}
+
+# - break
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("exit을 입력하면 종료합니다.");
+        
+        while(true){
+            System.out.print(">>");
+            String text = scanner.nextLine();
+            if(text.equals("exit"))
+                break;
+        }
+        System.out.println("종료합니다...");
+        scanner.close();
+    }
+}
+
+# - 배열 공유&치환
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        
+        int Array[] = new int[5];
+        int my[] = Array;
+        Array[3] = 5;
+        my[3] = 2;
+        int n = Array[3];
+        int s = my[3];
+        
+        System.out.print(n+"-"+s);
+        scanner.close();
+    }
+}
+
+# - 배열 선언 및 생성
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        
+        int Array[];
+        Array = new int[5];
+        
+        int max=0;
+        
+        System.out.println("양수 5개를 입력하세요.");
+        for(int i = 0; i<5; i++){
+            Array[i] = scanner.nextInt();
+            if(Array[i]>max)
+                max = Array[i];
+        }
+        System.out.print("가장 큰 수는"+max+"입니다.");
+        scanner.close();
+    }
+}
+
+변형 예제
+위 코드에서 최솟값과 평균값을 추가로 출력하기
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        
+        int Array[];
+
+        System.out.println("몇개의 정수를 입력 할 건지 입력하세요.");
+        int n = scanner.nextInt();
+        
+        Array = new int[n];
+        
+        System.out.println("양수"+ n +"개를 입력하세요.");
+        for(int i = 0; i<n; i++){
+            Array[i] = scanner.nextInt();
+        }    
+        
+        int max=Array[0];    
+        int min=Array[0];
+        
+        for(int i = 0;i<n; i++) {      
+            
+            if(Array[i]<min){
+                min = Array[i];
+            }
+            
+            else if(Array[i]>max)
+                max = Array[i];
+        }
+    
+        System.out.print("가장 큰 수는"+max+"입니다.");
+        System.out.print("가장 작은 수는"+min+"입니다.");
+        System.out.print("평균은"+ ((double)max+(double)min)/2 +"입니다.");
         scanner.close();
     }
 }
